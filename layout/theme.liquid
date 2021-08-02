@@ -19,7 +19,8 @@
   assign heading_font = settings.heading_font
   assign heading_font_bold = heading_font | font_modify: 'weight', 'bolder'  
 -%}
-aa<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"{% if enable_rtl %} dir="rtl"{% endif %}> <![endif]-->
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"{% if enable_rtl %} dir="rtl"{% endif %}> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"{% if enable_rtl %} dir="rtl"{% endif %}> <!--<![endif]-->
 <head>
   {%- if settings.enable_review and settings.review_app == 'yotpo' -%}
