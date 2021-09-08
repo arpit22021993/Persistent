@@ -1,0 +1,50 @@
+@import "_variables";
+@import "_mixins";
+@import "_breakpoints";
+
+// need to change the naming on these to actually make sense and be consistent
+.mt-5 {
+  margin-top: px-rem(50);
+}
+.mt-100 {
+  margin-top: px-rem(100);
+}
+.mb-5 {
+  margin-top: px-rem(50);
+}
+.pt-5 {
+ padding-top: px-rem(50);
+}
+.pb-5 {
+ padding-bottom: px-rem(50);
+}
+.pt-100{
+  padding-top: px-rem(100);
+  @media #{$mobile} {
+    padding-top: px-rem(50);
+  }
+}
+.pb-100 {
+  padding-bottom: px-rem(100);
+  @media #{$mobile} {
+    padding-bottom: px-rem(50);
+  }
+}
+
+// need this because the rough background png has about 50-100px of clear space under it. Needed on case by case basis
+.bg-mt-fix {
+  margin-top: -100px !important;
+}
+
+.mt-25p {
+  margin-top: px-rem(25);
+}
+
+.page-content-wrap {
+  width: 80%;
+  @include center-block;
+  max-width: 1070px;
+  @media #{$tablet} {
+    width: 90%;
+  }
+}

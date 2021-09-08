@@ -1,0 +1,26 @@
+@import "./_fonts";
+@import "./_reset";
+@import "./_type";
+@import "./_mixins";
+@import "./_breakpoints";
+@import "./_utilities";
+@import "./_variables";
+@import "./_visibility";
+@import "./_icons";
+@import "./_buttons";
+@import "./_inputs";
+@import "./_layout";
+// @import "./_grid";
+@import "./_transitions";
+@import "./_helpers";
+@import "./_locator-structure";
+
+img {
+  max-width: 100%;
+}
+
+body {
+  height:100vh; /* fix IE11 */
+  min-height:100%; /* fix IE11 */
+  background-color:  #fbf6e6;
+}

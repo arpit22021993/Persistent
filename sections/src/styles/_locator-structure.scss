@@ -1,0 +1,1646 @@
+@import "_variables";
+@import "_mixins";
+// using this one
+
+.locator {
+  color: $defaultTextColor;
+
+  p {
+    font-size: px-rem(16);
+    line-height: px-rem(22);
+    font-family: $baseFontFamily;
+    font-weight: 100;
+    margin: 15px 0;
+  }
+  &_widget{
+    &_wrapper{
+      width: 100%;
+      margin-top: 6%;
+    }
+  }
+
+  &_search {
+    height: 47px;
+    width: 200px;
+    border: 2px solid $brandGold;
+    color: $brandGold;
+    background-color: transparent;
+    font-family: $headingsFontFamily;
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 0;
+    transition: background-color .3s ease;
+
+    &:active, &:hover {
+      background-color: #fff;
+    }
+
+    &_header {
+      h1 {
+        font-size: $h3;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &_form {
+    width: 65%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 25px 0;
+    @media #{$tablet}{
+      @include center-block;
+      margin: 0 auto;
+    }
+    @media #{$mobile}{
+      margin: 0;
+      width: 100%;
+    }
+
+    * {
+      max-width: 600px;
+    }
+
+    p {
+      // hide: "use the form below ...
+     /*  &:nth-of-type(1) {
+        display: none;
+      } */
+      // hide: "you may search for wines ...
+      &:nth-of-type(3) {
+        display: none;
+      }
+    }
+  }
+
+  // results
+  &_results {
+    color: $brandBrown;
+    margin-top: 50px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    &_header {
+      display: none;
+    }
+  }
+
+  // result items
+  &_locations {
+    li {
+      width: 100%;
+      position: relative;
+      padding: 25px 115px 25px 0;
+      border-bottom: 2px solid $brandBrown;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .directions {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: right;
+
+        input {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &_info_window {
+    color: $black;
+    display: flex;
+    flex-direction: column-reverse;
+    font-family: $baseFontFamily;
+
+    .locator_directions {
+      display: block;
+      margin-top: 2px;
+    }
+  }
+
+  &_directions {
+    appearance: none;
+    height: 40px;
+    width: 110px;
+    background-color: $brandTan;
+    color: $brandGold;
+    font-family: $headingsFontFamily;
+    font-size: 16px;
+    border: 2px solid $brandGold;
+    letter-spacing: 0.04em;
+    border-radius: 0;
+    transition: transform .3s ease;
+    &:active, &:hover{
+      transform: scale(1.05);
+    }
+  }
+
+  &_errors {
+    li {
+      padding-top: 25px;
+      font-size: 16px;
+      font-family: $baseFontFamily;
+      line-height: 22px;
+    }
+  }
+
+  &_pages {
+    &:nth-of-type(1) {
+      display: none;
+    }
+    a {
+      color: $brandGold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  &_previous {
+    margin-right: 15px;
+    font-family: $headingsFontFamily;
+    cursor: pointer;
+  }
+  &_next {
+    margin-left: 15px;
+    font-family: $headingsFontFamily;
+    cursor: pointer;
+  }
+
+  &_current_page {
+    text-decoration: underline;
+  }
+
+
+  // map
+  &_map {
+    position: relative;
+    width: 100%;
+    padding-top: 60%;
+
+    @media #{$mobile} {
+      padding-top: 100%;
+    }
+  }
+
+  &_inner_map {
+    height: 100%;
+    width: 100%;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+
+  &_varietal, &_bottle {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 47px;
+    border: 1px solid $brandGold;
+    border-radius: 0px;
+    font-family: $caslonFontFamily;
+    font-weight: 500;
+    font-size: $h5;
+    color: $brandGold;
+    background-color: $brandTan;
+  }
+  &_bottle {
+  }
+
+  &_address, &_miles {
+    display: block;
+    background-color: $brandTan;
+    height: 47px;
+    width: 100%;
+    border-radius: 0;
+    font-family: $caslonFontFamily;
+    border: 1px solid $brandGold;
+    color: $brandGold;
+    font-size: $h5;
+    padding: 0 20px;
+    option {
+      width: 100px;
+      max-width: 600px;
+    }
+
+    &:disabled {
+      opacity: 1;
+    }
+    // outline of the input fields
+    &:focus{
+      outline-color: $brandBrown;
+    }
+
+    &_label {
+      display: block;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-family: $baseFontFamily;
+    }
+  }
+
+  hr {
+    display: none;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: $brandTan;
+    border-radius: 0;
+    vertical-align: middle;
+    margin: 15px 10px 15px 0;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: '✓';
+      position: absolute;
+      left: 13%;
+      top: -8%;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-width: 0px 2px 2px 0px;
+      color: $brandTan;
+      display: none;
+    }
+
+    &:checked {
+      background-color: $brandGold;
+      &::after {
+        display: block;
+
+      }
+    }
+
+    &:hover {
+      background-color: $brandGold;
+
+      &:after {
+        border-color: $black;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .locator_errors {
+    color: red;
+  }
+  .locator_input_error_label {
+    color: red;
+  }
+
+  @media #{$mobile} {
+    &_form {
+      margin: 0 auto 50px auto;
+      * {
+        max-width: 100%;
+      }
+    }
+  }
+}
+// /* General Code */
+// .locator_clear{
+// 	clear: both;
+// 	}
+// .locator_errors,
+// .locator_invite_errors{
+// 	display: none;
+// 	}
+// .locator_input_error{
+// 	border: 1px solid #880000 !important;
+// 	background-color: #FFCCCC;
+// 	}
+// .locator_input_error_label{
+// 	font-weight: bold;
+// 	color: #880000 !important;
+// 	text-decoration: underline;
+// 	}
+// .locator_loading{
+// 	display: none;
+// 	height: 24px;
+// 	margin-top: 10px;
+// 	background-image: url('ajax_loader.gif');
+// 	background-repeat: no-repeat;
+// 	background-position: center center;
+// 	}
+//
+// /* General Map Info Window */
+// .locator_info_window{
+// 	width: 300px;
+// 	}
+// .locator_info_window input{
+// 	clear: right;
+// 	float: right;
+// 	cursor: pointer;
+// 	margin: 8px 0 0 5px;
+// 	}
+//
+// /* Large Structure */
+// .locator_large{
+// 	}
+// .locator_large .locator_search_header,
+// .locator_large .locator_results_header,
+// .locator_large .locator_invite_header{
+// 	display: none;
+// 	}
+// .locator_large .locator_navigation{
+// 	display: none;
+// 	}
+// .locator_large .locator_map_heading{
+// 	display: none;
+// 	}
+//
+// /* Large Form */
+// .locator_large .locator_form{
+// 	width: 170px;
+// 	padding: 15px;
+// 	float: left;
+// 	margin-right: 20px;
+// 	}
+//
+// 	.locator_large .locator_form .locator_logo{
+// 		background-repeat: no-repeat;
+// 		background-position: center center;
+// 		height: 60px;
+// 		}
+// 	.locator_large .locator_form hr{
+// 		border: none;
+// 		margin: 10px 0px;
+// 		clear: both;
+// 		}
+// 	.locator_large .locator_form p{
+// 		text-align:center;
+// 		}
+// 	.locator_large .locator_errors,
+// 	.locator_large .locator_invite_errors{
+// 		margin: 10px 0px 0px 0px;
+// 		padding: 2px 4px;
+// 		color: #aa0000;
+// 		border: 1px solid #ff0000;
+// 		background-color: #ffcccc;
+// 		}
+// 	.locator_large .locator_errors li,
+// 	.locator_large .locator_invite_errors li{
+// 		list-style-type:none;
+// 		}
+// 	.locator_large .locator_form select{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		margin-bottom: 5px;
+// 		font-size: 10px;
+// 		}
+// 	.locator_large .locator_form input[type=text]{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		}
+// 	.locator_large .locator_form .locator_address_label,.locator_large .locator_form .locator_miles_label{
+// 		text-transform: uppercase;
+// 		display: block;
+// 		font-size: .8em;
+// 		}
+// 	.locator_large .locator_form .locator_current{
+// 		margin-bottom: 15px;
+// 		}
+// 	.locator_large .locator_form .locator_legalage{
+// 		margin-top: 10px;
+// 		}
+// 	.locator_large .locator_form .locator_search{
+// 		margin-top: 15px;
+// 		text-transform: uppercase;
+// 		width: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_large .locator_form .locator_type_group{
+// 		white-space: nowrap;
+// 		}
+//
+// /* Large Map */
+// .locator_large .locator_map{
+// 	height: 480px;
+// 	margin-left: 220px;
+// 	margin-bottom: 20px;
+// 	padding: 10px 10px 10px 10px;
+// 	}
+//
+// 	.locator_large .locator_map .locator_inner_map{
+// 		height: 480px;
+// 		}
+//
+// /* Large Results */
+// .locator_large .locator_results{
+// 	margin-left:220px;
+// 	display:none;
+// 	background:#fff;
+// 	border:2px solid #E5E6E7;
+// 	margin-right:10px;
+// 	padding-left:10px;
+// 	}
+//
+// 	.locator_large .locator_results h1{
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_large .locator_results p{
+// 		margin-top: 10px;
+// 		}
+// 	.locator_large .locator_results .locator_locations{
+// 		margin: 0px;
+// 		padding: 0px;
+// 		list-style-type: none;
+// 		margin-bottom: 20px;
+// 		}
+// 	.locator_large .locator_results .locator_locations li{
+// 		padding: 15px;
+// 		}
+// 	.locator_large .locator_results .locator_locations li div.directions{
+// 		float: right;
+// 		text-align:center;
+// 		}
+// 	.locator_large .locator_results .locator_locations li input{
+// 		cursor: pointer;
+// 		}
+// 	.locator_large .locator_results .locator_locations li a{
+// 		text-decoration: underline;
+// 		}
+// 	.locator_large .locator_results .locator_pages a{
+// 		margin-top: 0px;
+// 		display: inline-block;
+// 		text-decoration: none;
+// 		cursor: pointer;
+// 		}
+// 	.locator_large .locator_results .locator_pages a.locator_current_page{
+// 		text-decoration:underline;
+// 		}
+// 	.locator_large .locator_results .locator_pages a.locator_previous{
+// 		margin-right: 15px;
+// 		}
+// 	.locator_large .locator_results .locator_pages a.locator_next{
+// 		margin-left: 15px;
+// 		}
+//
+// /* Large Invite */
+// 	.locator_large .locator_invite{
+// 		display: none;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links{
+// 		list-style-type:none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links li{
+// 		width: 25%;
+// 		display:inline-block;
+// 		text-align:center;
+// 		padding: 10px 0;
+// 		margin-bottom: -2px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links li a{
+// 		cursor: pointer;
+// 		display:inline-block;
+// 		height: 17px;
+// 		font-size: 12px;
+// 		text-decoration:none;
+// 		text-align:center;
+// 		padding: 0px 20px;
+// 		background-repeat:no-repeat;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links li.locator_invite_email{
+// 		border-bottom: 0 !important;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links li.locator_invite_facebook a{
+// 		background-position: 0 -100px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_links li.locator_invite_twitter a{
+// 		background-position: 0 -199px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_container{
+// 		padding: 20px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form{
+// 		width: 66%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form label{
+// 		display:inline-block;
+// 		width: 96%;
+// 		margin-top: 10px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form .locator_invite_button{
+// 		cursor: pointer;
+// 		width: 96%;
+// 	}
+// 	.locator_large .locator_invite textarea,
+// 	.locator_large .locator_invite input{
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form textarea{
+// 		width: 96%;
+// 		height: 60px;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form .locator_invite_name{
+// 		width: 47%;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_form .locator_invite_email{
+// 		margin-left: 2%;
+// 		width: 47%;
+// 	}
+// 	.locator_large .locator_invite .locator_invite_message{
+// 		width: 31%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 		margin-left: 2%;
+// 	}
+//
+//
+//
+//
+// /* Medium Structure */
+// .locator_medium{
+// 	}
+// .locator_medium .locator_search_header,
+// .locator_medium .locator_results_header,
+// .locator_medium .locator_invite_header{
+// 	display: none;
+// 	}
+// .locator_medium .locator_navigation{
+// 	display: none;
+// 	}
+// .locator_medium .locator_map_heading{
+// 	display: none;
+// 	}
+// /* Medium Form */
+// .locator_medium .locator_form{
+// 	margin-bottom: 20px;
+// 	padding: 15px;
+// 	}
+// 	.locator_medium .locator_form .locator_logo{
+// 		background-repeat: no-repeat;
+// 		background-position: center center;
+// 		height: 60px;
+// 		}
+// 	.locator_medium .locator_form hr{
+// 		border: none;
+// 		margin: 10px 0px;
+// 		clear: both;
+// 		}
+// 	.locator_medium .locator_form p{
+// 		width: 190px;
+// 		float: left;
+// 		}
+// 	.locator_medium .locator_errors,
+// 	.locator_medium .locator_invite_errors{
+// 		margin: 0px 0px 0px 0px;
+// 		padding: 2px 4px;
+// 		color: #880000;
+// 		border: 1px solid #880000;
+// 		background-color: #ffcccc;
+// 		width: 97%;
+// 		float: left;
+// 		clear: left;
+// 		}
+// 	.locator_medium .locator_loading{
+// 		width: 50%;
+// 		float: right;
+// 		clear: left;
+// 		}
+// 	.locator_medium .locator_errors li,
+// 	.locator_medium .locator_invite_errors li{
+// 		list-style-type:none;
+// 		}
+// 	.locator_medium .locator_form select{
+// 		font-size: 10px;
+// 		}
+// 	.locator_medium .locator_form_container{
+// 		margin-left: 210px;
+// 		}
+// 	.locator_medium .locator_brand, .locator_medium .locator_subbrand, .locator_medium .locator_varietal, .locator_medium .locator_region, .locator_medium .locator_bottle{
+// 		margin-top: 5px;
+// 		width: 100%;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_medium .locator_form .locator_address_label,.locator_medium .locator_form .locator_miles_label{
+// 		text-transform: uppercase;
+// 		display: block;
+// 		font-size: .8em;
+// 		}
+// 	.locator_medium .locator_form .locator_location_left{
+// 		margin-top: 10px;
+// 		float: left;
+// 		width: 49%;
+// 		}
+// 	.locator_medium .locator_form .locator_location_right{
+// 		margin-top: 10px;
+// 		float: right;
+// 		width: 49%;
+// 		}
+// 	.locator_medium .locator_form input[type=text]{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		}
+// 	.locator_medium .locator_form .locator_legalage{
+// 		margin-bottom: 5px;
+// 		}
+// 	.locator_medium .locator_search{
+// 		width: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_medium .locator_form .locator_type_group{
+// 		white-space: nowrap;
+// 		}
+//
+// /* Medium Map */
+// .locator_medium .locator_map{
+// 	height: 460px;
+// 	margin-bottom: 20px;
+// 	padding: 10px 10px 10px 10px;
+// 	}
+// 	.locator_medium .locator_map .locator_inner_map{
+// 		height: 460px;
+// 		}
+//
+// /* Medium Results */
+// .locator_medium .locator_results{
+// 	display: none;
+// 	}
+//
+// 	.locator_medium .locator_results h1{
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_medium .locator_results p{
+// 		margin-top: 10px;
+// 		}
+// 	.locator_medium .locator_results .locator_locations{
+// 		margin: 0px;
+// 		padding: 0px;
+// 		list-style-type: none;
+// 		}
+// 	.locator_medium .locator_results .locator_locations li{
+// 		padding: 15px;
+// 		}
+// 	.locator_medium .locator_results .locator_locations li div.directions{
+// 		float: right;
+// 		text-align:center;
+// 		}
+// 	.locator_medium .locator_results .locator_locations li input{
+// 		cursor: pointer;
+// 		}
+// 	.locator_medium .locator_results .locator_locations li a{
+// 		text-decoration: underline;
+// 		}
+// 	.locator_medium .locator_results .locator_pages a{
+// 		margin-top: 20px;
+// 		display: inline-block;
+// 		text-decoration: none;
+// 		cursor: pointer;
+// 		}
+// 	.locator_medium .locator_results .locator_pages a.locator_current_page{
+// 		text-decoration:underline;
+// 		}
+// 	.locator_medium .locator_results .locator_pages a.locator_previous{
+// 		margin-right: 15px;
+// 		}
+// 	.locator_medium .locator_results .locator_pages a.locator_next{
+// 		margin-left: 15px;
+// 		}
+//
+// /* Medium Invite */
+// 	.locator_medium .locator_invite{
+// 		display: none;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links{
+// 		list-style-type:none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links li{
+// 		width: 32%;
+// 		display:inline-block;
+// 		text-align:center;
+// 		padding: 10px 0;
+// 		margin-bottom: -2px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links li a{
+// 		cursor: pointer;
+// 		display:inline-block;
+// 		height: 17px;
+// 		font-size: 12px;
+// 		text-decoration:none;
+// 		text-align:center;
+// 		padding: 0px 20px;
+// 		background-repeat:no-repeat;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links li.locator_invite_email{
+// 		border-bottom: 0 !important;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links li.locator_invite_facebook a{
+// 		background-position: 0 -100px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_links li.locator_invite_twitter a{
+// 		background-position: 0 -199px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_container{
+// 		padding: 20px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_container .locator_loading{
+// 		float: none !important;
+// 		width: 100%;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form{
+// 		width: 66%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form label{
+// 		display:inline-block;
+// 		width: 96%;
+// 		margin-top: 10px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form .locator_invite_button{
+// 		cursor: pointer;
+// 		width: 96%;
+// 	}
+// 	.locator_medium .locator_invite textarea,
+// 	.locator_medium .locator_invite input{
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form textarea{
+// 		width: 96%;
+// 		height: 60px;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form .locator_invite_name{
+// 		width: 47%;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_form .locator_invite_email{
+// 		margin-left: 2%;
+// 		width: 47%;
+// 	}
+// 	.locator_medium .locator_invite .locator_invite_message{
+// 		width: 30%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 		margin-left: 2%;
+// 	}
+//
+//
+//
+// /* Small Structure */
+// .locator_small{
+// 	margin-bottom: 60px;
+// 	}
+// .locator_small .locator_search_header,
+// .locator_small .locator_results_header,
+// .locator_small .locator_invite_header{
+// 	display: none;
+// 	}
+//
+// /* Small Form */
+// .locator_small .locator_form{}
+// 	.locator_small .locator_form .locator_logo{
+// 		display: none;
+// 		}
+// 	.locator_small .locator_form hr.locator_hr_first{
+// 		display: none;
+// 		}
+// 	.locator_small .locator_form hr{
+// 		border: none;
+// 		margin: 10px 0px;
+// 		clear: both;
+// 		}
+// 	.locator_small .locator_form p{
+// 		text-align:center;
+// 		}
+// 	.locator_small .locator_errors,
+// 	.locator_small .locator_invite_errors{
+// 		margin: 10px 0px 0px 0px;
+// 		padding: 2px 4px;
+// 		color: #880000;
+// 		border: 1px solid #880000;
+// 		background-color: #ffcccc;
+// 		}
+// 	.locator_small .locator_errors li,
+// 	.locator_small .locator_invite_errors li{
+// 		list-style-type:none;
+// 		}
+// 	.locator_small .locator_form select{
+// 		font-size: 10px;
+// 		}
+// 	.locator_small .locator_brand, .locator_small .locator_subbrand, .locator_small .locator_varietal, .locator_small .locator_region, .locator_small .locator_bottle{
+// 		margin-top: 5px;
+// 		width: 100%;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_small .locator_form .locator_address_label,.locator_small .locator_form .locator_miles_label{
+// 		text-transform: uppercase;
+// 		display: block;
+// 		font-size: .8em;
+// 		}
+// 	.locator_small .locator_form .locator_location_left{
+// 		margin-top: 10px;
+// 		width: 100%;
+// 		}
+// 	.locator_small .locator_form .locator_location_right{
+// 		margin-top: 10px;
+// 		width: 100%;
+// 		}
+// 	.locator_small .locator_form input[type=text]{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		}
+// 	.locator_small .locator_type{
+// 		text-align: center;
+// 		}
+// 	.locator_small .locator_restaurant{
+// 		margin-left: 30px;
+// 		}
+// 	.locator_small .locator_form .locator_legalage{
+// 		margin-bottom: 10px;
+// 		}
+// 	.locator_small .locator_search{
+// 		width: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_small .locator_form .locator_type_group{
+// 		white-space: nowrap;
+// 		}
+//
+// /* Small Map */
+// .locator_small .locator_map{
+// 	display: none;
+// 	}
+// .locator_small .locator_map_heading{
+// 	text-align:center;
+// 	display: none;
+// 	}
+// 	.locator_small .locator_map_heading h1{
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_small .locator_map_heading p{
+// 		margin-top: 10px;
+// 		}
+// .locator_small .locator_map{
+// 	height: 260px;
+// 	margin-bottom: 20px;
+// 	padding: 10px 10px 10px 10px;
+// 	}
+// 	.locator_small .locator_map .locator_inner_map{
+// 		height: 260px;
+// 		}
+//
+// /* Small Results */
+// .locator_small .locator_results{
+// 	text-align:center;
+// 	}
+//
+// 	.locator_small .locator_results h1{
+// 		display: none;
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_small .locator_results p{
+// 		display: none;
+// 		margin-top: 10px;
+// 		}
+// 	.locator_small .locator_results .locator_locations{
+// 		margin: 0px;
+// 		padding: 0px;
+// 		list-style-type: none;
+// 		}
+// 	.locator_small .locator_results .locator_locations li{
+// 		text-align:left;
+// 		padding: 15px 0px 15px 0px;
+// 		}
+// 	.locator_small .locator_results .locator_locations li div.directions{
+// 		float: right;
+// 		text-align:center;
+// 		}
+// 	.locator_small .locator_results .locator_locations li input{
+// 		cursor: pointer;
+// 		}
+// 	.locator_small .locator_results .locator_locations li a{
+// 		text-decoration: underline;
+// 		}
+// 	.locator_small .locator_results .locator_pages a{
+// 		margin-top: 20px;
+// 		display: inline-block;
+// 		text-decoration: none;
+// 		cursor: pointer;
+// 		}
+// 	.locator_small .locator_results .locator_pages a.locator_current_page{
+// 		text-decoration:underline;
+// 		}
+// 	.locator_small .locator_results .locator_pages a.locator_previous{
+// 		margin-right: 15px;
+// 		}
+// 	.locator_small .locator_results .locator_pages a.locator_next{
+// 		margin-left: 15px;
+// 		}
+//
+// /* Small Navigation */
+// .locator_small .locator_navigation{
+// 	position: fixed;
+// 	height: 50px;
+// 	width: 100%;
+// 	left: 0px;
+// 	bottom: 0px;
+// 	display: none;
+// 	}
+// 	.locator_small .locator_navigation ul{
+// 		list-style-type:none;
+// 		margin: 0px;
+// 		padding:0px;
+// 		height: 100%;
+// 		}
+// 	.locator_small .locator_navigation ul li{
+// 		float: left;
+// 		}
+// 	.locator_small .locator_navigation li{
+// 		width: 50%;
+// 		height: 100%;
+// 		}
+// 	.locator_small .locator_navigation ul.locator_navigation_results li,
+// 	.locator_small .locator_navigation ul.locator_navigation_research li,
+// 	.locator_small .locator_navigation ul.locator_navigation_invite li,
+// 	.locator_small .locator_navigation ul.locator_navigation_invite_form li,
+// 	.locator_small .locator_navigation ul.locator_navigation_invite_message li{
+// 		width: 100%;
+// 		height: 100%;
+// 		}
+// 	.locator_small .locator_navigation li a{
+// 		background-repeat: no-repeat;
+// 		display: block;
+// 		height: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_small .locator_navigation ul.locator_navigation_search li:first-child a,.locator_small .locator_navigation ul.locator_navigation_results li:first-child a,.locator_small .locator_navigation ul.locator_navigation_research li:first-child a{
+// 		border: none;
+// 		}
+//
+// /* Small Invite */
+// 	.locator_small .locator_invite{
+// 		display: none;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_links{
+// 		list-style-type:none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_links li{
+// 		width: 100%;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_links li a{
+// 		cursor: pointer;
+// 		display:block;
+// 		height: 17px;
+// 		font-size: 12px;
+// 		text-decoration:none;
+// 		text-align:center;
+// 		padding: 5px 0;
+// 		background-repeat:no-repeat;
+// 		text-transform:uppercase;
+// 		margin: 0 0 5px 0;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_links li.locator_invite_email{
+// 		border-bottom: 0 !important;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_container{
+// 	}
+// 	.locator_small .locator_invite .locator_invite_form{
+// 	}
+// 	.locator_small .locator_invite .locator_invite_form label{
+// 		display:block;
+// 		margin-top: 10px;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_button{
+// 		width: 100%;
+// 		padding: 5px 0;
+// 		cursor: pointer;
+// 	}
+// 	.locator_small .locator_invite textarea,
+// 	.locator_small .locator_invite input{
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_form textarea{
+// 		width: 100%;
+// 		height: 60px;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_form .locator_invite_name{
+// 		width: 100%;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_form .locator_invite_email{
+// 		width: 100%;
+// 		margin-bottom: 10px;
+// 	}
+// 	.locator_small .locator_invite .locator_invite_message{
+// 		display:block;
+// 	}
+//
+//
+//
+//
+//
+// /* Widget Structure */
+// .locator_widget{
+// 	}
+// .locator_widget .locator_search_header{
+// 	height: 24px;
+// 	padding: 0px 0px 0px 10px;
+// 	font-weight: bold;
+// 	border-bottom: none !important;
+// 	}
+// .locator_widget .locator_results_header{
+// 	display: none;
+// 	height: 24px;
+// 	padding: 0px 0px 0px 10px;
+// 	font-weight: bold;
+// 	border-bottom: none !important;
+// 	}
+// 	.locator_widget .locator_search_header h1,
+// 	.locator_widget .locator_results_header h1,
+// 	.locator_widget .locator_invite_header h1{
+// 		font-size: 1em;
+// 		display: inline-block;
+// 		}
+// 	.locator_widget .locator_search_header span, .locator_widget .locator_results_header span{
+// 		font-size: .8em;
+// 		display: inline-block;
+// 		margin-left: 10px;
+// 		}
+// 	.locator_widget .locator_results_header a.locator_header_search{
+// 		float: right;
+// 		height: 100%;
+// 		width: 30px;
+// 		cursor: pointer;
+// 		background-repeat: no-repeat;
+// 		}
+// .locator_widget .locator_widget_wrapper{
+// 	position: relative;
+// 	}
+// .locator_widget .locator_navigation{
+// 	display: none;
+// 	}
+// .locator_widget .locator_map_heading{
+// 	display: none;
+// 	}
+//
+// /* Widget Form */
+// .locator_widget .locator_form{
+// 	margin-bottom: 20px;
+// 	padding: 15px;
+// 	}
+// 	.locator_widget .locator_form .locator_logo{
+// 		display: none;
+// 		}
+// 	.locator_widget .locator_form hr.locator_hr_first{
+// 		display: none;
+// 		}
+// 	.locator_widget .locator_form hr{
+// 		border: none;
+// 		margin: 10px 0px;
+// 		clear: both;
+// 		}
+// 	.locator_widget .locator_form p{
+// 		width: 190px;
+// 		float: left;
+// 		}
+// 	.locator_widget .locator_errors,
+// 	.locator_widget .locator_invite_errors{
+// 		margin: 0px 0px 0px 0px;
+// 		padding: 2px 4px;
+// 		color: #880000;
+// 		border: 1px solid #880000;
+// 		background-color: #ffcccc;
+// 		width: 97%;
+// 		float: left;
+// 		clear: left;
+// 		}
+// 	.locator_widget .locator_loading{
+// 		width: 50%;
+// 		float: right;
+// 		clear: left;
+// 		}
+// 	.locator_widget .locator_errors li,
+// 	.locator_widget .locator_invite_errors li{
+// 		list-style-type:none;
+// 		}
+// 	.locator_widget .locator_form select{
+// 		font-size: 10px;
+// 		}
+// 	.locator_widget .locator_form_container{
+// 		margin-left: 210px;
+// 		}
+// 	.locator_widget .locator_brand, .locator_widget .locator_subbrand, .locator_widget .locator_varietal, .locator_widget .locator_region, .locator_widget .locator_bottle{
+// 		margin-top: 5px;
+// 		width: 100%;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_widget .locator_form .locator_address_label,.locator_widget .locator_form .locator_miles_label{
+// 		text-transform: uppercase;
+// 		display: block;
+// 		font-size: .8em;
+// 		}
+// 	.locator_widget .locator_form .locator_location_left{
+// 		margin-top: 10px;
+// 		float: left;
+// 		width: 49%;
+// 		}
+// 	.locator_widget .locator_form .locator_location_right{
+// 		margin-top: 10px;
+// 		float: right;
+// 		width: 49%;
+// 		}
+// 	.locator_widget .locator_form input[type=text]{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		}
+// 	.locator_widget .locator_search{
+// 		width: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_widget .locator_form .locator_type_group{
+// 		white-space: nowrap;
+// 		}
+//
+// /* Widget Map */
+// .locator_widget .locator_map{
+// 	height: 175px;
+// 	margin-bottom: 20px;
+// 	padding: 10px 10px 10px 10px;
+// 	margin-right: 300px;
+// 	display: none;
+// 	}
+// 	.locator_widget .locator_map .locator_inner_map{
+// 		height: 175px;
+// 		}
+//
+// /* Widget Results */
+// .locator_widget .locator_results{
+// 	height: 175px;
+// 	width: 279px;
+// 	padding: 10px;
+// 	overflow: auto;
+// 	position: absolute;
+// 	top: 0px;
+// 	right: 0px;
+// 	display: none;
+// 	}
+//
+// 	.locator_widget .locator_results h1{
+// 		display: none;
+// 		}
+// 	.locator_widget .locator_results p{
+// 		margin-top: 0px;
+// 		}
+// 	.locator_widget .locator_results_instructions{
+// 		display: none;
+// 		}
+// 	.locator_widget .locator_results .locator_locations{
+// 		margin: 0px;
+// 		padding: 0px;
+// 		list-style-type: none;
+// 		}
+// 	.locator_widget .locator_results .locator_locations li{
+// 		padding-top: 15px;
+// 		}
+// 	.locator_widget .locator_results .locator_locations li div.directions{
+// 		float: right;
+// 		text-align:center;
+// 		}
+// 	.locator_widget .locator_results .locator_locations li input{
+// 		cursor: pointer;
+// 		}
+// 	.locator_widget .locator_results .locator_locations li a{
+// 		text-decoration: underline;
+// 		}
+// 	.locator_widget .locator_results .locator_pages a{
+// 		margin-top: 20px;
+// 		display: inline-block;
+// 		text-decoration: none;
+// 		cursor: pointer;
+// 		}
+// 	.locator_widget .locator_results .locator_pages a.locator_current_page{
+// 		text-decoration:underline;
+// 		}
+// 	.locator_widget .locator_results .locator_pages a.locator_previous{
+// 		margin-right: 15px;
+// 		}
+// 	.locator_widget .locator_results .locator_pages a.locator_next{
+// 		margin-left: 15px;
+// 		}
+//
+// /* Widget Invite */
+// 	.locator_widget .locator_invite_header{
+// 		display: none;
+// 		font-size: 10px !important;
+// 		height: 24px;
+// 		padding: 0px 0px 0px 10px;
+// 		font-weight: bold;
+// 		border-bottom: none !important;
+// 	}
+// 	.locator_widget .locator_invite{
+// 		display: none;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links{
+// 		list-style-type:none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links li{
+// 		width: 32%;
+// 		display:inline-block;
+// 		text-align:center;
+// 		padding: 10px 0;
+// 		margin-bottom: -2px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links li a{
+// 		cursor: pointer;
+// 		display:inline-block;
+// 		height: 17px;
+// 		font-size: 12px;
+// 		text-decoration:none;
+// 		text-align:center;
+// 		padding: 0px 20px;
+// 		background-repeat:no-repeat;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links li.locator_invite_email{
+// 		border-bottom: 0 !important;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links li.locator_invite_facebook a{
+// 		background-position: 0 -100px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_links li.locator_invite_twitter a{
+// 		background-position: 0 -199px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_container{
+// 		padding: 20px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_container .locator_loading{
+// 		float: none !important;
+// 		width: 100%;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form{
+// 		width: 66%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form label{
+// 		display:inline-block;
+// 		width: 96%;
+// 		margin-top: 10px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form .locator_invite_button{
+// 		cursor: pointer;
+// 		width: 96%;
+// 	}
+// 	.locator_widget .locator_invite textarea,
+// 	.locator_widget .locator_invite input{
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form textarea{
+// 		width: 96%;
+// 		height: 60px;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form .locator_invite_name{
+// 		width: 47%;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_form .locator_invite_email{
+// 		margin-left: 2%;
+// 		width: 47%;
+// 	}
+// 	.locator_widget .locator_invite .locator_invite_message{
+// 		width: 30%;
+// 		display:inline-block;
+// 		vertical-align:top;
+// 		margin-left: 2%;
+// 	}
+//
+//
+//
+//
+//
+//
+// /* Narrow Structure */
+// .locator_narrow{
+// 	margin-bottom: 60px;
+// 	}
+// .locator_narrow .locator_search_header{
+// 	height: 24px;
+// 	padding: 0px 0px 0px 10px;
+// 	font-weight: bold;
+// 	border-bottom: none !important;
+// 	}
+// .locator_narrow .locator_results_header{
+// 	display: none;
+// 	height: 24px;
+// 	padding: 0px 0px 0px 10px;
+// 	font-weight: bold;
+// 	border-bottom: none !important;
+// 	}
+// 	.locator_narrow .locator_search_header h1,
+// 	.locator_narrow .locator_results_header h1,
+// 	.locator_narrow .locator_invite_header h1{
+// 		font-size: .8em;
+// 		display: inline-block;
+// 		}
+// 	.locator_narrow .locator_search_header span, .locator_narrow .locator_results_header span{
+// 		display: none;
+// 		}
+// 	.locator_narrow .locator_results_header a.locator_header_search{
+// 		display: none;
+// 		}
+//
+// /* Narrow Form */
+// .locator_narrow .locator_form{
+// 	padding: 15px;
+// 	}
+// 	.locator_narrow .locator_form .locator_logo{
+// 		display: none;
+// 		}
+// 	.locator_narrow .locator_form hr.locator_hr_first{
+// 		display: none;
+// 		}
+// 	.locator_narrow .locator_form hr{
+// 		border: none;
+// 		margin: 10px 0px;
+// 		clear: both;
+// 		}
+// 	.locator_narrow .locator_form p{
+// 		text-align:center;
+// 		}
+// 	.locator_narrow .locator_errors,
+// 	.locator_narrow .locator_invite_errors{
+// 		margin: 10px 0px 0px 0px;
+// 		padding: 2px 4px;
+// 		color: #880000;
+// 		border: 1px solid #880000;
+// 		background-color: #ffcccc;
+// 		}
+// 	.locator_narrow .locator_errors li,
+// 	.locator_narrow .locator_invite_errors li{
+// 		list-style-type:none;
+// 		}
+// 	.locator_narrow .locator_form select{
+// 		font-size: 10px;
+// 		}
+// 	.locator_narrow .locator_brand, .locator_narrow .locator_subbrand, .locator_narrow .locator_varietal, .locator_narrow .locator_region, .locator_narrow .locator_bottle{
+// 		margin-top: 5px;
+// 		width: 100%;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_narrow .locator_form .locator_address_label,.locator_narrow .locator_form .locator_miles_label{
+// 		text-transform: uppercase;
+// 		display: block;
+// 		font-size: .8em;
+// 		}
+// 	.locator_narrow .locator_form .locator_location_left{
+// 		margin-top: 10px;
+// 		width: 100%;
+// 		}
+// 	.locator_narrow .locator_form .locator_location_right{
+// 		margin-top: 10px;
+// 		width: 100%;
+// 		}
+// 	.locator_narrow .locator_form input[type=text]{
+// 		width: 100%;
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 		}
+// 	.locator_narrow .locator_type{
+// 		text-align: center;
+// 		}
+// 	.locator_narrow .locator_restaurant{
+// 		margin-left: 10px;
+// 		}
+// 	.locator_narrow .locator_search{
+// 		width: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_narrow .locator_form .locator_type_group{
+// 		white-space: nowrap;
+// 		}
+//
+// /* Narrow Map */
+// .locator_narrow .locator_map{
+// 	display: none;
+// 	}
+// .locator_narrow .locator_map_heading{
+// 	text-align:center;
+// 	display: none;
+// 	}
+// 	.locator_narrow .locator_map_heading h1{
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_narrow .locator_map_heading p{
+// 		margin-top: 10px;
+// 		}
+// .locator_narrow .locator_map{
+// 	height: 360px;
+// 	margin-bottom: 0px;
+// 	padding: 10px 10px 10px 10px;
+// 	}
+// 	.locator_narrow .locator_map .locator_inner_map{
+// 		height: 360px;
+// 		}
+//
+// /* Narrow Results */
+// .locator_narrow .locator_results{
+// 	display: none;
+// 	text-align:center;
+// 	padding: 10px;
+// 	overflow: auto;
+// 	height: 360px;
+// 	}
+//
+// 	.locator_narrow .locator_results h1{
+// 		display: none;
+// 		font-size: 1.2em;
+// 		margin-bottom: 0px;
+// 		}
+// 	.locator_narrow .locator_results p{
+// 		display: none;
+// 		margin-top: 10px;
+// 		}
+// 	.locator_narrow .locator_results .locator_locations{
+// 		margin: 0px;
+// 		padding: 0px;
+// 		list-style-type: none;
+// 		}
+// 	.locator_narrow .locator_results .locator_locations li{
+// 		text-align:left;
+// 		padding: 15px 0px 15px 0px;
+// 		}
+// 	.locator_narrow .locator_results .locator_locations li div.directions{
+// 		float: right;
+// 		text-align:center;
+// 		}
+// 	.locator_narrow .locator_results .locator_locations li input{
+// 		cursor: pointer;
+// 		}
+// 	.locator_narrow .locator_results .locator_locations li a{
+// 		text-decoration: underline;
+// 		}
+// 	.locator_narrow .locator_results .locator_pages a{
+// 		margin-top: 20px;
+// 		display: inline-block;
+// 		text-decoration: none;
+// 		cursor: pointer;
+// 		}
+// 	.locator_narrow .locator_results .locator_pages a.locator_current_page{
+// 		text-decoration:underline;
+// 		}
+// 	.locator_narrow .locator_results .locator_pages a.locator_previous{
+// 		margin-right: 15px;
+// 		}
+// 	.locator_narrow .locator_results .locator_pages a.locator_next{
+// 		margin-left: 15px;
+// 		}
+//
+// /* Narrow Navigation */
+// .locator_narrow .locator_navigation{
+// 	height: 50px;
+// 	width: 100%;
+// 	left: 0px;
+// 	bottom: 0px;
+// 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+// 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+// 	box-sizing: border-box;
+// 	display: none;
+// 	}
+// 	.locator_narrow .locator_navigation ul{
+// 		list-style-type:none;
+// 		margin: 0px;
+// 		padding:0px;
+// 		height: 100%;
+// 		}
+// 	.locator_narrow .locator_navigation ul li{
+// 		float: left;
+//
+// 		}
+// 	.locator_narrow .locator_navigation li{
+// 		width: 50%;
+// 		height: 100%;
+// 		}
+// 	.locator_narrow .locator_navigation .locator_navigation_invite li,
+// 	.locator_narrow .locator_navigation .locator_navigation_invite_form li,
+// 	.locator_narrow .locator_navigation .locator_navigation_invite_message li{
+// 		width: 100%;
+// 		height: 100%;
+// 		}
+// 	.locator_narrow .locator_navigation li a{
+// 		background-repeat: no-repeat;
+// 		display: block;
+// 		height: 100%;
+// 		cursor: pointer;
+// 		}
+// 	.locator_narrow .locator_navigation ul.locator_navigation_search li:first-child a,.locator_narrow .locator_navigation ul.locator_navigation_results li:first-child a,.locator_narrow .locator_navigation ul.locator_navigation_research li:first-child a{
+// 		border: none;
+// 		}
+//
+// /* Narrow Invite */
+// 	.locator_narrow .locator_invite{
+// 		padding: 15px;
+// 		display: none;
+// 	}
+// 	.locator_narrow .locator_invite_header{
+// 		display: none;
+// 		height: 24px;
+// 		padding: 0px 0px 0px 10px;
+// 		font-weight: bold;
+// 		border-bottom: none !important;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_links{
+// 		list-style-type:none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_links li{
+// 		width: 100%;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_links li a{
+// 		cursor: pointer;
+// 		display:block;
+// 		height: 17px;
+// 		font-size: 12px;
+// 		text-decoration:none;
+// 		text-align:center;
+// 		padding: 5px 0;
+// 		background-repeat:no-repeat;
+// 		text-transform:uppercase;
+// 		margin: 0 0 5px 0;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_links li.locator_invite_email{
+// 		border-bottom: 0 !important;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_container{
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_form{
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_form label{
+// 		display:block;
+// 		margin-top: 10px;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_button{
+// 		width: 100%;
+// 		padding: 5px 0;
+// 		cursor: pointer;
+// 	}
+// 	.locator_narrow .locator_invite textarea,
+// 	.locator_narrow .locator_invite input{
+// 		box-sizing: border-box;
+// 		-moz-box-sizing: border-box;
+// 		-webkit-box-sizing: border-box;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_form textarea{
+// 		width: 100%;
+// 		height: 60px;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_form .locator_invite_name{
+// 		width: 100%;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_form .locator_invite_email{
+// 		width: 100%;
+// 		margin-bottom: 10px;
+// 	}
+// 	.locator_narrow .locator_invite .locator_invite_message{
+// 		display:block;
+// 	}
+//
+//

@@ -1,0 +1,227 @@
+@import "_variables";
+@import "_mixins";
+@import "_breakpoints";
+
+//
+// Typography
+// --------------------------------------------------
+// Customize this to meet your project needs
+
+
+// Body text
+// -------------------------
+
+html {
+  // font-size: 3.0vh; // 16px @ $grid-max-width of 1140px wide = 1.4vw
+
+  @media #{$desktop-max} {
+    // font-size: 16px; // limit font-size at widths larger than $grid-max-width
+  }
+
+  @media (max-width: px-rem($grid-mobile-breakpoint)) {
+  }
+}
+
+body {
+  @include fontRegular;
+  color: $defaultTextColor;
+  letter-spacing: 1px;
+  line-height: $baseLineHeight;
+}
+
+p {
+  font-family: $baseFontFamily;
+  margin-bottom: 1rem;
+  font-weight: $bodyFontLightWeight;
+  color: #3C3931;
+  line-height: px-rem(26);
+  font-size: px-rem(16);
+  font-style: normal;
+  &.light {
+    font-weight: $bodyFontLightWeight
+  }
+
+  b, strong, &.bold {
+    font-weight: $bodyFontBoldWeight;
+    & em {
+      font-style: italic;
+    }
+  }
+  em {
+    font-style: italic;
+    & b, & strong {
+      font-weight: $bodyFontBoldWeight;
+    }
+  }
+
+}
+
+strong {
+  font-weight: $bodyFontBoldWeight;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+// Links
+// -------------------------
+
+a, button {
+  color: $linkColor;
+  text-decoration: none;
+  transition: color $transitionFast linear;
+  font-size: 1.125rem;
+  font-weight: $bodyFontNormalWeight;
+  position: relative;
+  cursor: pointer;
+}
+a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: -2px;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  background: $brandTan;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+a:hover,
+button:hover,
+a:active,
+button:active,
+a:focus,
+button:focus {
+  color: black; // change this later
+}
+
+h1, h2, h3, h4, h5, h6, .t1, .t2, .t3, .t4, .t5, .t6 {
+  text-rendering: optimizeLegibility; // disable this if we have performance issues.
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  line-height: 1;
+  margin: 0 0 0.5rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headingsFontFamily;
+  font-weight: $headingNormalWeight;
+  font-style: normal;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: $headingNormalWeight;
+  }
+}
+
+.t1, .t2, .t3, .t4, .t5, .t6 {
+  &.tb {
+    font-weight: $headingBoldWeight;
+  }
+  &.tl {
+    font-weight: $headingLightWeight;
+  }
+}
+
+.t {
+  text-rendering: optimizeLegibility; // disable this if we have performance issues.
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: $h1;
+}
+h2 {
+  font-size: $h2;
+}
+h3 {
+  font-size: $h3;
+}
+h4 {
+  font-size: $h4;
+}
+h5 {
+  font-size: $h5;
+}
+h6 {
+  font-size: $h6;
+}
+
+.t1 {
+  font-size: $h1 * $baseScale;
+}
+.t2 {
+  font-size: $h2 * $baseScale;
+}
+.t3 {
+  font-size: $h3 * $baseScale;
+}
+.t4 {
+  font-size: $h4 * $baseScale;
+}
+.t5 {
+  font-size: $h5 * $baseScale;
+}
+.t6 {
+  font-size: $h6 * $baseScale;
+}
+
+.p1, .p2, .p3 {
+  font-weight: $bodyFontNormalWeight;
+}
+
+.p1 {
+  font-size: 1.125rem;
+  line-height: 1.222;
+  margin-bottom: 1rem;
+}
+
+.p2 {
+  font-size: px-rem(25px * $baseScale);
+  line-height: px-rem(34px * $baseScale, 25px * $baseScale);
+  margin-bottom: px-rem(34px * $baseScale, 25px * $baseScale);
+}
+
+.p3 {
+  font-size: px-rem(16px * $baseScale);
+  line-height: px-rem(22px * $baseScale, 16px * $baseScale);
+  margin-bottom: px-rem(16px * $baseScale, 16px * $baseScale);
+}
+
+
+@include media-breakpoint-down(sm) {
+  h1, .t1 {
+    font-size: $h1 * 0.75;
+  }
+  h2, .t2 {
+    font-size: $h2 * 0.75;
+  }
+  h3, .t3 {
+    font-size: $h3 * 0.75;
+  }
+  h4, .t4 {
+    font-size: $h4 * 0.75;
+  }
+  // h1 {
+  //   font-size: $h1 * 0.85;
+  // }
+  // h1 {
+  //   font-size: $h1 * 0.85;
+  // }
+}
