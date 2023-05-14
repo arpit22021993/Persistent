@@ -182,5 +182,8 @@
   {%- if settings.news_platform == 'klaviyo' -%}
     {{ settings.klaviyo_install_script | raw }}
   {%- endif -%}
+
+{% include 'swymSnippet' %}
+
 </body>
 </html>
