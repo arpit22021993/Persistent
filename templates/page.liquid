@@ -10,3 +10,20 @@
     </div>
   </div>
 </div>
+<script>
+const urlParams = new URLSearchParams(queryString);  
+const submited_date = urlParams.get('timestamp');  
+var date1 = submited_date;
+var date2 = new Date();
+var diff = date2.valueOf() - date1; 
+var fi = diff/1000/60/60;
+if(fi > 1)
+{
+  alert("token is expired");
+}
+  else
+{
+   alert("token is valid");
+}
+console.log(fi);
+</script>  
