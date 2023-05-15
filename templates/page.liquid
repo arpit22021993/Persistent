@@ -52,8 +52,8 @@
       Method: 'POST',
       crossDomain: true,
       Headers: {
-        'Accept': 'application.json',
-        'Content-Type': 'application/json'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
       },
       Body: JSON.stringify({id:decrypt_email,token:submited_token})
     }).then(function(res){ console.log(res) })
