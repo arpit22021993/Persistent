@@ -50,6 +50,7 @@
       {
       fetch('http://localhost:8888/verify_token/tokenverify.php', {
       Method: 'POST',
+      crossDomain: true,
       Headers: {
         'Accept': 'application.json',
         'Content-Type': 'application/json'
