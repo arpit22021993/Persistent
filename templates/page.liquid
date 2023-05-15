@@ -54,8 +54,7 @@
         'Accept': 'application.json',
         'Content-Type': 'application/json'
       },
-      Body: JSON.stringify({id:decrypt_email,token:submited_token}),
-      Cache: 'default'
+      Body: JSON.stringify({id:decrypt_email,token:submited_token})
     }).then(function(res){ console.log(res) })
   .catch(function(res){ console.log(res) })
       }
