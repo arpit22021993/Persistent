@@ -36,8 +36,8 @@
       else
     {
     alert(submited_id);
-    var dec_email = CryptoJS.AES.decrypt(submited_id.toString(), "secret key 123");
-    decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
+    var dec_email = CryptoJS.AES.decrypt(submited_id, "secret key 123");
+     var decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
     alert(dec_email);
     document.getElementById("csvemail").value = decrypt_email;
     }
@@ -48,17 +48,17 @@
     {
       window.location.href = "/";
     }
-    function csvupload()
-      {
-      fetch('https://app-dtc-wd-test-dev.sdlc.app.cbrands.com/verifytoken.php', {
-      Method: 'POST',
-      crossDomain: true,
-      Headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-      },
-      Body: JSON.stringify({id:decrypt_email,token:submited_token})
-    }).then(function(res){ console.log(res) })
-  .catch(function(res){ console.log(res) })
-      }
+  //   function csvupload()
+  //     {
+  //     fetch('https://app-dtc-wd-test-dev.sdlc.app.cbrands.com/verifytoken.php', {
+  //     Method: 'POST',
+  //     crossDomain: true,
+  //     Headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //     },
+  //     Body: JSON.stringify({id:decrypt_email,token:submited_token})
+  //   }).then(function(res){ console.log(res) })
+  // .catch(function(res){ console.log(res) })
+  //     }
 </script>
