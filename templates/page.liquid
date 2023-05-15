@@ -13,7 +13,11 @@
 <script>
 const queryString = window.location.search;  
 const urlParams = new URLSearchParams(queryString);  
-const submited_date = urlParams.get('timestamp');    
+const submited_date = urlParams.get('timestamp');   
+const submited_token = urlParams.get('token');
+const submited_id = urlParams.get('id');
+if(submited_date && submited_token && submited_id) 
+{
 var date1 = submited_date;
 var date2 = new Date();
 var diff = date2.valueOf() - date1; 
@@ -28,4 +32,9 @@ if(fi > 1)
 }
   console.log(submited_date);
 console.log(fi);
+}
+else
+{
+  window.location.href = "/";
+}
 </script>  
