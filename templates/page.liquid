@@ -36,7 +36,7 @@ var dec_email = CryptoJS.AES.decrypt(submited_id, "secret key 123");
 var decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
 document.getElementById("csvemail").value = decrypt_email;  
 }
-  console.log(submited_date);
+console.log(submited_date);
 console.log(fi);
 }
 else
