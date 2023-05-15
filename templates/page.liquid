@@ -12,28 +12,8 @@
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script>
-const cipher = salt => {
-    const textToChars = text => text.split('').map(c => c.charCodeAt(0));
-    const byteHex = n => ("0" + Number(n).toString(16)).substr(-2);
-    const applySaltToChar = code => textToChars(salt).reduce((a,b) => a ^ b, code);
-
-    return text => text.split('')
-      .map(textToChars)
-      .map(applySaltToChar)
-      .map(byteHex)
-      .join('');
-}
-    
-const decipher = salt => {
-    const textToChars = text => text.split('').map(c => c.charCodeAt(0));
-    const applySaltToChar = code => textToChars(salt).reduce((a,b) => a ^ b, code);
-    return encoded => encoded.match(/.{1,2}/g)
-      .map(hex => parseInt(hex, 16))
-      .map(applySaltToChar)
-      .map(charCode => String.fromCharCode(charCode))
-      .join('');
-}  
 const queryString = window.location.search;  
 const urlParams = new URLSearchParams(queryString);  
 const submited_date = urlParams.get('timestamp');   
@@ -52,7 +32,8 @@ if(fi > 1)
   else
 {
 const myDecipher = decipher('mySecretSalt');
-var decrypt_email = myDecipher(submited_id);
+var dec_email = CryptoJS.AES.decrypt(submited_id, "secret key 123");  
+var decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
 document.getElementById("csvemail").value = decrypt_email;  
 }
   console.log(submited_date);
