@@ -35,6 +35,7 @@
     }
       else
     {
+    alert(submited_id);
     var dec_email = CryptoJS.AES.decrypt(submited_id.toString(), "secret key 123");
     decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
     alert(dec_email);
