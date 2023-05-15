@@ -12,8 +12,6 @@
     </div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-
 <script>
 const cipher = salt => {
     const textToChars = text => text.split('').map(c => c.charCodeAt(0));
@@ -47,16 +45,14 @@ var date1 = submited_date;
 var date2 = new Date();
 var diff = date2.valueOf() - date1; 
 var fi = diff/1000/60/60;
-if(fi > 300)
+if(fi > 1)
 {
   alert("token is expired");
 }
   else
 {
 const myDecipher = decipher('mySecretSalt');
-  var myPassword = "myPassword";
-var decrypt_email = CryptoJS.AES.decrypt(submited_id,myPassword);
-  
+var decrypt_email = myDecipher(submited_id);
 document.getElementById("csvemail").value = decrypt_email;  
 }
   console.log(submited_date);
