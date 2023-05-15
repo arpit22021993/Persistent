@@ -1,51 +1,61 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-    	<h1 class="page-title text-center gutter-ele-bottom-tbs">{{ page.title }}</h1>
+      <h1 class="page-title text-center gutter-ele-bottom-tbs">{{ page.title }}</h1>
       <div class="page-content w100">
         <div class="rte">
-         <input type = "email" name="csvemail" id="csvemail" disabled><br><br>
-         <input type = "file" name="csvfile" id="csvfile"><br><br>
-          <a href ="javascript:void(0);" onclick = "csvupload()" >SUBMIT</a>
-        </div>        
+          <input type="email" name="csvemail" id="csvemail" disabled><br>
+          <br>
+          <input type="file" name="csvfile" id="csvfile"><br>
+          <br>
+          <a href="javascript:void(0);" onclick="csvupload()">SUBMIT</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script>
-
-function csvupload()
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const submited_date = urlParams.get('timestamp');
+  const submited_token = urlParams.get('token');
+  const submited_id = urlParams.get('id');
+  var decrypt_email;
+  if(submited_date && submited_token && submited_id)
   {
-    alert("test");
+  var date1 = submited_date;
+  var date2 = new Date();
+  var diff = date2.valueOf() - date1;
+  var fi = diff/1000/60/60;
+  //alert({{settings.token_expire}});
+  if(fi > {{settings.token_expire}})
+  {
+    alert("token is expired");
   }
-const queryString = window.location.search;  
-const urlParams = new URLSearchParams(queryString);  
-const submited_date = urlParams.get('timestamp');   
-const submited_token = urlParams.get('token');
-const submited_id = urlParams.get('id');
-if(submited_date && submited_token && submited_id) 
-{
-var date1 = submited_date;
-var date2 = new Date();
-var diff = date2.valueOf() - date1; 
-var fi = diff/1000/60/60;
-//alert({{settings.token_expire}});  
-if(fi > {{settings.token_expire}})
-{
-  alert("token is expired");
-}
+    else
+  {
+  var dec_email = CryptoJS.AES.decrypt(submited_id, "secret key 123");
+  decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
+  document.getElementById("csvemail").value = decrypt_email;
+  }
+  console.log(submited_date);
+  console.log(fi);
+  }
   else
-{
-var dec_email = CryptoJS.AES.decrypt(submited_id, "secret key 123");  
-var decrypt_email = dec_email.toString(CryptoJS.enc.Utf8);
-document.getElementById("csvemail").value = decrypt_email;  
-}
-console.log(submited_date);
-console.log(fi);
-}
-else
-{
-  window.location.href = "/";
-}
-</script>  
+  {
+    window.location.href = "/";
+  }
+  function csvupload()
+    {
+    fetch('http://localhost:8888/verify_token/tokenverify.php', {
+    Method: 'POST',
+    Headers: {
+      Accept: 'application.json',
+      'Content-Type': 'application/json'
+    },
+    Body: JSON.stringify({id:decrypt_email,token:submited_token}),
+    Cache: 'default'
+  });
+    }
+</script>
