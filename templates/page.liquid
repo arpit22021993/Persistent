@@ -25,7 +25,7 @@ var date1 = submited_date;
 var date2 = new Date();
 var diff = date2.valueOf() - date1; 
 var fi = diff/1000/60/60;
-if(fi > 1)
+if(fi > {{settings.token_expire}})
 {
   alert("token is expired");
 }
