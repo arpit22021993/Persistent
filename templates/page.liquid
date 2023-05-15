@@ -20,7 +20,7 @@
     const urlParams = new URLSearchParams(queryString);
     const submited_date = urlParams.get('timestamp');
     const submited_token = urlParams.get('token');
-    const submited_id = urlParams.get('id');
+    const submited_id = decodeURIComponent(urlParams.get('id'));
     var decrypt_email;
     if(submited_date && submited_token && submited_id)
     {
