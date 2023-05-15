@@ -54,7 +54,8 @@ if(fi > 300)
   else
 {
 const myDecipher = decipher('mySecretSalt');
-var decrypt_email = CryptoJS.AES.decrypt(submited_id);;
+  var myPassword = "myPassword";
+var decrypt_email = CryptoJS.AES.decrypt(submited_id,myPassword);
   
 document.getElementById("csvemail").value = decrypt_email;  
 }
