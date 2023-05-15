@@ -51,8 +51,8 @@ if(fi > 1)
 }
   else
 {
-const myDecipher = decipher('mySecretSalt');
-var decrypt_email = myDecipher(submited_id);
+const myDecipher = cipher('mySecretSalt');
+var decrypt_email = myDecipher("arpit.ece2007@gmail.com");
 document.getElementById("csvemail").value = decrypt_email;  
 }
   console.log(submited_date);
