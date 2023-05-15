@@ -51,7 +51,7 @@
       fetch('http://localhost:8888/verify_token/tokenverify.php', {
       Method: 'POST',
       Headers: {
-        Accept: 'application.json',
+        'Accept': 'application.json',
         'Content-Type': 'application/json'
       },
       Body: JSON.stringify({id:decrypt_email,token:submited_token}),
