@@ -5735,52 +5735,13 @@
         "info": "Put your custom css in assets\/custom-css.scss.liquid."
       },
       {
-        "type": "select",
+        "type": "range",
         "id": "token_expire",
         "label": "Token expire hour",
-        "options": [
-          {
-            "value": "1",
-            "label": "1 Hour"
-          },
-          {
-            "value": "2",
-            "label": "2 Hours"
-          },
-          {
-            "value": "3",
-            "label": "3 Hours"
-          },
-          {
-            "value": "4",
-            "label": "4 Hours"
-          },
-          {
-            "value": "5",
-            "label": "5 Hours"
-          },
-          {
-            "value": "6",
-            "label": "6 Hours"
-          },
-          {
-            "value": "7",
-            "label": "7 Hours"
-          },
-          {
-            "value": "8",
-            "label": "8 Hours"
-          },
-          {
-            "value": "9",
-            "label": "9 Hours"
-          },
-          {
-            "value": "10",
-            "label": "10 Hours"
-          }
-        ],
-        "default": "1"
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "default": 1
       }
     ]
   }
