@@ -4,7 +4,7 @@
     	<h1 class="page-title text-center gutter-ele-bottom-tbs">{{ page.title }}</h1>
       <div class="page-content w100">
         <div class="rte">
-         <input type = "email" name="csvemail" id="csvemail"><br><br>
+         <input type = "email" name="csvemail" id="csvemail" disabled><br><br>
          <input type = "file" name="csvfile" id="csvfile"><br><br>
           <a href ="javascript:void()">SUBMIT</a>
         </div>        
@@ -51,7 +51,9 @@ if(fi > 1)
 }
   else
 {
-   
+const myDecipher = decipher('mySecretSalt');
+var decrypt_email = myDecipher(submited_id);
+document.getElementById("csvemail").value = decrypt_email;  
 }
   console.log(submited_date);
 console.log(fi);
