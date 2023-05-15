@@ -54,7 +54,8 @@ if(fi > 1)
   else
 {
 const myDecipher = decipher('mySecretSalt');
-var decrypt_email = myDecipher("697a78617c266d6b6d3a38383f486f65696164266b6765");
+var decrypt_email = CryptoJS.AES.decrypt(submited_id);;
+  
 document.getElementById("csvemail").value = decrypt_email;  
 }
   console.log(submited_date);
