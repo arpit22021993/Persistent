@@ -51,13 +51,24 @@
   }
   function csvupload()
     {
-      var files = document.getElementById('csvfile').files;
-      if (files)
-       {
-      var file = files[0];
-      var fileName = file.name;
-       }
+      var file_data = $("#csvfile").prop("files")[0];   // Getting the properties of file from file field
+      var form_data = new FormData();                  // Creating object of FormData class
+      form_data.append("file", file_data);              // Appending parameter named file with properties of file_field to form_data
+      form_data.append("id", decrypt_email);
+      form_data.append("token", submited_token);
+      form_data.append("shop", "draftorder199.myshopify.com");
       alert(file);
+      $.ajax({
+                url: "http://localhost:8888/verify_token/tokenverify.php",
+                dataType: 'script',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         // Setting the data attribute of ajax with file_data
+                type: 'post'
+       },function(data,status){
+          alert("Data: " + data + "\nStatus: " + status);
+      });
       // $.post("http://localhost:8888/verify_token/tokenverify.php",
       // {
       // id: decrypt_email,
