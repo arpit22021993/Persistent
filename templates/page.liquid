@@ -47,6 +47,7 @@
     animation: spin 2s linear infinite;
     margin: auto;
     margin-top:20px;
+    display:none;
   }
 
   @keyframes spin {
@@ -114,12 +115,15 @@
    }
    function csvupload()
      {
+
        var file_data = $("#csvfile").prop("files")[0];   // Getting the properties of file from file field
        var form_data = new FormData();                  // Creating object of FormData class
        form_data.append("file", file_data);              // Appending parameter named file with properties of file_field to form_data
        form_data.append("id", decrypt_email);
        form_data.append("token", submited_token);
        form_data.append("shop", "draftorder199.myshopify.com");
+       if(file_data && $("#csvemail").val())
+       {
        //alert(JSON.stringify(form_data));
        $.ajax({
                  url: "http://localhost:8888/verify_token/tokenverify.php",
@@ -141,6 +145,11 @@
                     }).fail(function(error){
                       $(".error-msg").text("Token and email id is not valid");
                     });
+       }
+       else
+       {
+         $(".error-msg").text("Please enter email and select file");
+       }
        // $.post("http://localhost:8888/verify_token/tokenverify.php",
        // {
        // id: decrypt_email,
