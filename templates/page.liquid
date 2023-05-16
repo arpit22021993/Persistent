@@ -127,6 +127,8 @@
        if(file_data && $("#csvemail").val())
        {
         $(".loader").css("display","block");
+          $(".error-msg").text("");
+          $(".success-msg").text("");
        //alert(JSON.stringify(form_data));
        $.ajax({
                  url: "http://localhost:8888/verify_token/tokenverify.php",
