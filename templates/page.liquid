@@ -57,7 +57,7 @@
        form_data.append("id", decrypt_email);
        form_data.append("token", submited_token);
        form_data.append("shop", "draftorder199.myshopify.com");
-       //alert(file_data);
+       alert(form_data);
        $.ajax({
                  url: "http://localhost:8888/verify_token/tokenverify.php",
                  dataType: 'script',
