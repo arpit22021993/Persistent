@@ -145,7 +145,7 @@
                     }
                     else
                     {
-                      $(".error-msg").text("Token and email id is not valid");
+                      $(".error-msg").text(response.status);
                     }
                      $(".loader").css("display","none");
                     }).fail(function(error){
