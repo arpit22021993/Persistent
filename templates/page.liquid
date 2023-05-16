@@ -37,14 +37,15 @@
   <div class="row">
     <div class="col-xs-12">
       <h1 class="page-title text-center gutter-ele-bottom-tbs">{{ page.title }}</h1>
-      <div class="page-content w100 text-center">
+      <div class="page-content w100">
         <div class="rte main-form">
           <label for="csvemail">Email</label>
           <input type="email" name="csvemail" id="csvemail" disabled><br>
           <label for="csvfile">File upload (CSV Only)</label><br>
           <input type="file" name="csvfile" id="csvfile"><br>
-
-          <a href="javascript:void(0);" onclick="csvupload()">SUBMIT</a>
+          <div class="action-containe relative">
+            <a href="javascript:void(0);" class="absolute" onclick="csvupload()">SUBMIT</a>
+          </div>
         </div>
       </div>
     </div>
