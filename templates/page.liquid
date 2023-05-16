@@ -66,9 +66,11 @@
                  processData: false,
                  data: form_data,                         // Setting the data attribute of ajax with file_data
                  type: 'post'
-        },function(data,status){
-           alert("Data: " + data + "\nStatus: " + status);
-       });
+       }).done(function(response){
+                    alert(response);
+                    }).fail(function(error){
+                    console.log(error.statusText);
+                    });
        // $.post("http://localhost:8888/verify_token/tokenverify.php",
        // {
        // id: decrypt_email,
