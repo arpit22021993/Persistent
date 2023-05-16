@@ -124,6 +124,7 @@
        form_data.append("shop", "draftorder199.myshopify.com");
        if(file_data && $("#csvemail").val())
        {
+        $(".loader").css("display","block");
        //alert(JSON.stringify(form_data));
        $.ajax({
                  url: "http://localhost:8888/verify_token/tokenverify.php",
@@ -142,8 +143,10 @@
                     {
                       $(".error-msg").text("Token and email id is not valid");
                     }
+                     $(".loader").css("display","none");
                     }).fail(function(error){
                       $(".error-msg").text("Token and email id is not valid");
+                      $(".loader").css("display","none");
                     });
        }
        else
