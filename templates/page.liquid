@@ -107,9 +107,16 @@
                  data: form_data,                         // Setting the data attribute of ajax with file_data
                  type: 'post'
        }).done(function(response){
-                    alert(response);
+                    if(response == "Done")
+                    {
+                      $(".success-msg").text("Successfully uploaded");
+                    }
+                    else
+                    {
+                      $(".error-msg").text("Token and email id is not valid");
+                    }
                     }).fail(function(error){
-                    console.log(error.statusText);
+                      $(".error-msg").text("Token and email id is not valid");
                     });
        // $.post("http://localhost:8888/verify_token/tokenverify.php",
        // {
