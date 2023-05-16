@@ -39,7 +39,8 @@
     }
     .loader {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -65,7 +66,7 @@
           <br>
           <div class="action-containe text-center">
             <a href="javascript:void(0);" onclick="csvupload()">SUBMIT</a>
-            <div class="loader"></div>
+            <span class="loader"></span>
           </div>
           <P class="error-msg"></P>
           <P class="success-msg"></P>
