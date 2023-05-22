@@ -518,7 +518,7 @@
     "type_base_size": "16px",
     "type_bold_product_titles": false,
     "load_custom_css": false,
-    "token_expire": 2,
+    "token_expire": 14,
     "checkout_header_image": "",
     "checkout_logo_image": "",
     "checkout_logo_position": "left",
