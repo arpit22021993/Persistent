@@ -119,7 +119,7 @@
   {%- endif -%}
 </head>
 
-<body class="template-{{ template | split: '.' | first }}{% if enable_rtl %} rtl{% endif %}">
+<body class="template-{{ template | split: '.' | first }}{% if enable_rtl %} rtl{% endif %}">{% capture the_snippet_content %}{% render 'socialshopwave-helper' %}{% endcapture %}{% unless the_snippet_content contains 'Liquid error' %}{{ the_snippet_content }}{% endunless %}
   {%- assign use_growave_account_app = false -%}
   {%- if settings.enable_growave == true and settings.account_app == "growave" -%}
     {% capture the_snippet_auth %}{% render 'socialshopwave-widget-auth' %}{% endcapture %}
